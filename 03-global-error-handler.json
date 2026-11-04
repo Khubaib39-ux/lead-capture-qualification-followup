@@ -1,0 +1,87 @@
+{
+  "name": "Global Error Handler",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "784cdea1-7cbc-45dc-9779-d532bd104938",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "sendTo": "mdkhubaib39@gmail.com",
+        "subject": "=⚠️ Workflow failed: {{ $json.workflow.name }}",
+        "emailType": "text",
+        "message": "=A workflow execution failed.  Workflow: {{ $json.workflow.name }} Failed node: {{ $json.execution.lastNodeExecuted ?? 'unknown' }} Error: {{ $json.execution.error?.message ?? 'no message' }} Execution ID: {{ $json.execution.id }} Mode: {{ $json.execution.mode }} Time: {{ $now.toFormat('yyyy-MM-dd HH:mm') }}  Open execution: {{ $json.execution.url }}",
+        "options": {
+          "appendAttribution": false,
+          "senderName": "Workflow Alert System "
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "073a0a6d-7d4f-486b-9532-e271d846f9ec",
+      "name": "Send Error Alert",
+      "webhookId": "1f04eb07-585c-404a-837d-d3d53c502b85",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WSoWv9Hb2bQtoiUm",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Global Error Handler\n\nRuns automatically when a connected workflow fails.\n\nEmails the owner the workflow name, failed node, error message and a link to the execution.\n\n- **Connect:** Workflow Settings > Error Workflow\n- **Note:** works on published (production) runs only",
+        "height": 480,
+        "width": 736,
+        "color": "#1B413B"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -208,
+        -256
+      ],
+      "id": "4433d390-8334-484e-b0ac-11e9c0dd2dc3",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send Error Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "e10a0660-b967-4f1a-a6e9-5d5b57b0f150",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5badae4ea662badcd841d4681d27cd776263cbb816941fddf782033ef3ff69d2"
+  },
+  "nodeGroups": [],
+  "id": "wVrHZfBO7cqPXyh5",
+  "tags": []
+}
