@@ -1,6 +1,6 @@
 # Lead Capture, Qualification & Follow-up System
 
-*An n8n automation by Khubaib · Built with n8n, Google Sheets and Gmail*
+*An n8n automation by Khubaib Mehmood · Built with n8n, Google Sheets and Gmail*
 
 ## The problem
 
