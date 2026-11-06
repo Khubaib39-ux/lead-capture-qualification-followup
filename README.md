@@ -1,6 +1,6 @@
 # Lead Capture, Qualification & Follow-up System
 
-*An n8n automation by Khubaib Mehmood · Built with n8n, Google Sheets and Gmail*
+*An n8n automation by Khubaib · Built with n8n, Google Sheets and Gmail*
 
 ## The problem
 
@@ -33,7 +33,7 @@ The project is made of three workflows. Their exported JSON files are in this re
 
 ## Workflow 1: Lead Capture and Qualification
 
-![Lead Capture and Qualification workflow](screenshots/01-lead-capture-workflow.png)
+![Lead Capture and Qualification workflow](01-lead-capture-workflow.png)
 
 **Flow:** Lead Form Trigger → Standardize Lead Fields → Validate Lead Data → Finding Existing Lead → Is Duplicate? → Score Lead → Save new lead → Route by Temperature → confirmation email → Mark Contacted
 
@@ -51,7 +51,7 @@ The project is made of three workflows. Their exported JSON files are in this re
 | Alert Owner Hot Lead | Hot leads only: emails the owner the name, service, budget, timeline, score, phone and email |
 | Mark Contacted / Mark Owner Notified | Update the sheet so contact and alert status are always recorded |
 
-![Hot lead alert email](screenshots/05-alert-email.png)
+![Hot lead alert email](05-alert-email.png)
 
 ### Scoring rules
 
@@ -77,7 +77,7 @@ Rules are used instead of AI because they are predictable, free, easy to debug a
 
 ## Workflow 2: Lead Follow-up Engine
 
-![Lead Follow-up Engine workflow](screenshots/02-followup-engine-workflow.png)
+![Lead Follow-up Engine workflow](02-followup-engine-workflow.png)
 
 **Flow:** Schedule Trigger → Get Lead → Find Due Leads → Get Recent Inbox → Check Replies → Is replied? → (true) Mark Replied, or (false) Get Templates → Build Follow-ups → Send Follow-up → Mark Followed Up
 
@@ -109,13 +109,13 @@ Messages are written in the Templates tab of the sheet with {{name}} and {{servi
 
 ## Workflow 3: Global Error Handler
 
-![Global Error Handler workflow](screenshots/03-error-handler-workflow.png)
+![Global Error Handler workflow](03-error-handler-workflow.png)
 
 An Error Trigger workflow connected to the other workflows through their Error Workflow setting. When any node fails after its retries, it emails the owner the workflow name, the failed node, the error message, the execution ID and a link to the execution.
 
 ## Google Sheet structure
 
-![Lead tab of the Google Sheet](screenshots/04-sheet-lead-tab.png)
+![Lead tab of the Google Sheet](04-sheet-lead-tab.png)
 
 | Tab | Purpose |
 |---|---|
